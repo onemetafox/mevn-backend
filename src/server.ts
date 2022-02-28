@@ -27,8 +27,9 @@ mongoose.connection.on('error', () => {
 
 app.use(bodyParser.json({ type: '*/*' }));
 app.use(router);
+const allowedOrigins = ['https://aap-mevnfrontend.herokuapp.com'];
 const options: cors.CorsOptions = {
-    origin: "*"
+    origin: allowedOrigins
 };
 app.use(cors(options));
 
