@@ -27,11 +27,11 @@ mongoose.connection.on('error', () => {
 
 app.use(bodyParser.json({ type: '*/*' }));
 app.use(router);
-const allowedOrigins = ['https://aap-mevnfrontend.herokuapp.com'];
-const options: cors.CorsOptions = {
-    origin: allowedOrigins
-};
-app.use(cors(options));
+// const allowedOrigins = ['https://aap-mevnfrontend.herokuapp.com'];
+// const options: cors.CorsOptions = {
+//     origin: "*"
+// };
+app.use(cors({ origin: "*", credentials: true }));
 
 const port = process.env.PORT || 3090;
 app.listen( port, () => {
