@@ -24,9 +24,13 @@ mongoose.connect(mongoUri);
 mongoose.connection.on('error', () => {
     throw new Error(`unable to connect to database: ${mongoUri}`);
 });
-app.use(cors());
+
 app.use(bodyParser.json({ type: '*/*' }));
 app.use(router);
+const options: cors.CorsOptions = {
+    origin: "*"
+};
+app.use(cors(options));
 
 const port = process.env.PORT || 3090;
 app.listen( port, () => {
