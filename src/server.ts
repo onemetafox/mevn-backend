@@ -20,10 +20,10 @@ if(dbSetting.user){
     mongoUri = "mongodb://"+dbSetting.host + ":" + dbSetting.port + "/" + dbSetting.db
 }
 
-mongoose.connect(mongoUri);
-mongoose.connection.on('error', () => {
-    throw new Error(`unable to connect to database: ${mongoUri}`);
-});
+// mongoose.connect(mongoUri);
+// mongoose.connection.on('error', () => {
+//     throw new Error(`unable to connect to database: ${mongoUri}`);
+// });
 
 app.use(bodyParser.json({ type: '*/*' }));
 app.use(router);
