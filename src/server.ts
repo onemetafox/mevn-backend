@@ -19,12 +19,13 @@ app.all('*', function(req, res, next) {
 });
 
 
-let mongoUri = "";
-if(dbSetting.user){
-    mongoUri = "mongodb://"+dbSetting.user + ":" + dbSetting.pwd+"@"+dbSetting.host+":"+dbSetting.port+"/"+dbSetting.db;
-}else{
-    mongoUri = "mongodb://"+dbSetting.host + ":" + dbSetting.port + "/" + dbSetting.db
-}
+const mongoUri = dbSetting.uri || '';
+console.log('mongoUri = ', mongoUri);
+// if(dbSetting.user){
+//     mongoUri = "mongodb://"+dbSetting.user + ":" + dbSetting.pwd+"@"+dbSetting.host+":"+dbSetting.port+"/"+dbSetting.db;
+// }else{
+//     mongoUri = "mongodb://"+dbSetting.host + ":" + dbSetting.port + "/" + dbSetting.db
+// }
 
 mongoose.connect(mongoUri);
 mongoose.connection.on('error', () => {

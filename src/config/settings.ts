@@ -11,5 +11,6 @@ export const dbSetting = {
     user: process.env.MONGO_USER,
     pwd: process.env.MONGO_PWD,
     db: process.env.MONGO_DB,
+    uri: process.env.MONGO_URI,
     mongooseDebug: process.env.MONGOOSE_DEBUG
 }
