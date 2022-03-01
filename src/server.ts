@@ -9,8 +9,14 @@ import hpp from 'hpp';
 import { dbSetting } from './config/settings';
 
 const app = express();
-app.use(helmet());
-app.use(hpp());
+// app.use(helmet());
+// app.use(hpp());
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 
 let mongoUri = "";
