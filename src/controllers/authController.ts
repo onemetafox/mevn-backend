@@ -26,21 +26,28 @@ export default class AuthController
         }
     }
     public static signup(req:Request, res: Response, next: Function ){
-        try{
-            const user = new User({
-                name: req.body.username,
-                email: req.body.email,
-                password: jwt.encode(req.body.password, secretKey)
-            })
-            user.save()
-            .then((result:any)=>{
-                res.json(ResponseService.success(result))
-            })
-            .catch((err:any)=>{
-                res.json(ResponseService.failure(err));
-            })
-        }catch(e){
-            res.json(ResponseService.failure(e));
-        }
+        const user = {
+            name: req.body.username,
+            email: req.body.email,
+            password: jwt.encode(req.body.password, secretKey)
+        };
+        res.json(user);
+
+        // try{
+        //     const user = new User({
+        //         name: req.body.username,
+        //         email: req.body.email,
+        //         password: jwt.encode(req.body.password, secretKey)
+        //     })
+        //     user.save()
+        //     .then((result:any)=>{
+        //         res.json(ResponseService.success(result))
+        //     })
+        //     .catch((err:any)=>{
+        //         res.json(ResponseService.failure(err));
+        //     })
+        // }catch(e){
+        //     res.json(ResponseService.failure(e));
+        // }
     }
 }
