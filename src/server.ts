@@ -31,7 +31,7 @@ app.use(router);
 // const options: cors.CorsOptions = {
 //     origin: "*"
 // };
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({ origin: "*"}));
 
 const port = process.env.PORT || 3090;
 app.listen( port, () => {
