@@ -20,12 +20,6 @@ app.all('*', function(req, res, next) {
 
 
 const mongoUri = dbSetting.uri || '';
-console.log('mongoUri = ', mongoUri);
-// if(dbSetting.user){
-//     mongoUri = "mongodb://"+dbSetting.user + ":" + dbSetting.pwd+"@"+dbSetting.host+":"+dbSetting.port+"/"+dbSetting.db;
-// }else{
-//     mongoUri = "mongodb://"+dbSetting.host + ":" + dbSetting.port + "/" + dbSetting.db
-// }
 
 mongoose.connect(mongoUri);
 mongoose.connection.on('error', () => {
@@ -34,10 +28,7 @@ mongoose.connection.on('error', () => {
 
 app.use(bodyParser.json({ type: '*/*' }));
 app.use(router);
-// const allowedOrigins = ['https://aap-mevnfrontend.herokuapp.com'];
-// const options: cors.CorsOptions = {
-//     origin: "*"
-// };
+
 app.use(cors({
     origin: "*",
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH', 'OPTIONS']
